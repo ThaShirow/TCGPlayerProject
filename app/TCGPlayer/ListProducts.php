@@ -41,12 +41,14 @@ class ListProducts {
 
     }
 
-    public function removeProduct(string $skuID) {
+    public function removeProduct(array $productArr) {
 
         $qty = 0;
-        $price = 0.00;
+        $price = $productArr["price"];
+        $skuID = $productArr["skuID"];
+
         $listProducts = new UpdateSKUInventory($this->apiOptions);
-        $request = new UpdateSKUInventoryRequest(["price" => 2.00, "quantity" => $qty, "channelid" => $this->channelID], $this->bearerToken, $this->storeID, $skuID);
+        $request = new UpdateSKUInventoryRequest(["price" => $price, "quantity" => $qty, "channelid" => $this->channelID], $this->bearerToken, $this->storeID, $skuID);
         $response = $listProducts->sendRequest($request)->getContent();
 
         return $response;

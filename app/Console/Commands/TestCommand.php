@@ -56,7 +56,7 @@ class TestCommand extends Command {
 
         $testArr = array("skuID" => "262695", "price" => "19.99", "qty" => "3");
 
-        $test = $this->list->removeProduct($testArr["skuID"]);
+        $test = $this->token->refreshBearerToken();
         $this->info(print_r($test));
 
     }

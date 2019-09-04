@@ -25,7 +25,21 @@ class TokenHandler {
             ->where("api_name", "TCGPlayer")
             ->first();
 
-        return $bearerToken->auth_token;
+        $authToken = $bearerToken->auth_token;
+        $expireDate = $bearerToken->auth_expires_on;
+        $isExpired = $this->isTokenExpired($expireDate);
+
+        if($isExpired) {
+
+           $authToken = $this->refreshBearerToken();
+
+           return $authToken;
+
+        } else {
+
+            return $authToken;
+
+        }
 
     }
 
@@ -48,14 +62,19 @@ class TokenHandler {
         } catch (\Exception $e) {
 
         }
+
         $response = json_decode($response->getBody()->getContents(), TRUE);
+
         $authToken = $response["access_token"];
+        $expiresDate = $response[".expires"];
 
         $result = $this->conn->table("api_credentials_t")
             ->where("api_name", "TCGPlayer")
-            ->update(["auth_token" => $authToken]);
+            ->update(["auth_token" => $authToken, "auth_expires_on" => $expiresDate]);
 
         if($result) {
+
+            return $authToken;
 
         } else {
 
@@ -64,7 +83,19 @@ class TokenHandler {
 
     }
 
+    public function isTokenExpired($authTokenDate) {
 
+        if(strtotime($authTokenDate) > strtotime("+2 Days")) {
+
+            return false;
+
+        } else {
+
+            return true;
+
+        }
+
+    }
 
 
 
