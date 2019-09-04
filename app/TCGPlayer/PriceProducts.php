@@ -5,6 +5,8 @@ namespace App\TCGPlayer;
 
 use Illuminate\Config\Repository;
 use Illuminate\Database\Connection;
+use TrollAndToad\TCGPlayer\Stores\Inventory\BatchUpdateStoreSKUPrices;
+use TrollAndToad\TCGPlayer\Stores\Inventory\BatchUpdateStoreSKUPricesRequest;
 use TrollAndToad\TCGPlayer\Stores\Inventory\UpdateSKUInventoryPrice;
 use TrollAndToad\TCGPlayer\Stores\Inventory\UpdateSKUInventoryPriceRequest;
 
@@ -27,17 +29,30 @@ class PriceProducts {
 
     }
 
-    public function priceProducts(array $productArr) {
+    public function priceProduct(array $productArr) {
 
         $skuID = $productArr["skuID"];
         $price = floatval($productArr["price"]);
 
-        $priceProducts = new UpdateSKUInventoryPrice($this->apiOptions);
+        $priceProduct = new UpdateSKUInventoryPrice($this->apiOptions);
         $request = new UpdateSKUInventoryPriceRequest(["price" => $price, "channelid" => $this->channelID], $this->bearerToken, $this->storeID, $skuID);
-        $response = $priceProducts->sendRequest($request)->getContent();
+        $response = $priceProduct->sendRequest($request)->getContent();
 
         return $response;
 
+
+    }
+
+    public function priceProducts(array $productArr) {
+
+        //Multi-dimensional array format for using BatchUpdate
+        //$productArr = array(array("skuId" => value, "price" => value, "channelId" => value))
+
+        $priceProducts = new BatchUpdateStoreSKUPrices($this->apiOptions);
+        $request = new BatchUpdateStoreSKUPricesRequest($productArr, $this->bearerToken, $this->storeID);
+        $response = $priceProducts->sendRequest($request)->getContent();
+
+        return $response;
 
     }
 

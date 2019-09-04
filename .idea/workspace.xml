@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09ca5464-6a43-4afe-8dd7-edaf89d2abf6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/TCGPlayer/GetPriceData.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Console/Commands/TestCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/TestCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/TCGPlayer/ListProducts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/TCGPlayer/ListProducts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/TCGPlayer/CommonInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/TCGPlayer/CommonInfo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/TCGPlayer/GetOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/TCGPlayer/GetOrders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/TCGPlayer/PriceProducts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/TCGPlayer/PriceProducts.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/TCGPlayer/TokenHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/TCGPlayer/TokenHandler.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -157,7 +159,7 @@
       <workItem from="1566593338890" duration="38116000" />
       <workItem from="1566936326026" duration="10481000" />
       <workItem from="1567003349946" duration="11225000" />
-      <workItem from="1567170228499" duration="34876000" />
+      <workItem from="1567170228499" duration="47175000" />
     </task>
     <servers />
   </component>

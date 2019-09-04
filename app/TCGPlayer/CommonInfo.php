@@ -27,6 +27,23 @@ class CommonInfo {
 
     }
 
+    public function getCommonData() {
+
+        $token = $this->getBearerToken();
+        $storeID = $this->getStoreID();
+        $channelID = $this->getChannelID();
+        $apiOptions = $this->getApiOptions();
+
+        $dataObject = new \stdClass();
+        $dataObject->bearerToken = $token;
+        $dataObject->storeID = $storeID;
+        $dataObject->channelID = $channelID;
+        $dataObject->apiOptions = $apiOptions;
+
+        return $dataObject;
+
+    }
+
     public function getBearerToken() {
 
         $tokenHandle = new TokenHandler($this->config, $this->conn);

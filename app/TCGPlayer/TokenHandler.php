@@ -54,14 +54,7 @@ class TokenHandler {
         $body = "grant_type=client_credentials&client_id=".$publicKey."&client_secret=".$privateKey;
 
         $client = new Client();
-
-        try {
-
-            $response = $client->post($url, ["body" => $body, "headers" => $headers]);
-
-        } catch (\Exception $e) {
-
-        }
+        $response = $client->post($url, ["body" => $body, "headers" => $headers]);
 
         $response = json_decode($response->getBody()->getContents(), TRUE);
 
@@ -83,7 +76,7 @@ class TokenHandler {
 
     }
 
-    public function isTokenExpired($authTokenDate) {
+    protected function isTokenExpired($authTokenDate) {
 
         if(strtotime($authTokenDate) > strtotime("+2 Days")) {
 

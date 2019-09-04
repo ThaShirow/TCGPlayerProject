@@ -7,6 +7,7 @@ use Illuminate\Config\Repository;
 use Illuminate\Database\Connection;
 use App\TCGPlayer\ListProducts;
 use App\TCGPlayer\TokenHandler;
+use App\TCGPlayer\GetPriceData;
 
 class TestCommand extends Command {
     /**
@@ -33,6 +34,8 @@ class TestCommand extends Command {
     protected $config;
     protected $list;
     protected $token;
+    protected $grabPrice;
+
     /**
      * @var ListProducts
      */
@@ -44,6 +47,7 @@ class TestCommand extends Command {
         $this->config = $config;
         $this->list = new ListProducts($config, $conn);
         $this->token = new TokenHandler($config, $conn);
+        $this->grabPrice = new GetPriceData($config, $conn);
 
     }
 
@@ -54,9 +58,9 @@ class TestCommand extends Command {
      */
     public function handle() {
 
-        $testArr = array("skuID" => "262695", "price" => "19.99", "qty" => "3");
+        $sku = array(14602);
 
-        $test = $this->token->refreshBearerToken();
+        $test = $this->grabPrice->getLowestPriceData($sku);
         $this->info(print_r($test));
 
     }
