@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09ca5464-6a43-4afe-8dd7-edaf89d2abf6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/TCGPlayer/GetPriceData.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/TestCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/TestCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/TCGPlayer/CommonInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/TCGPlayer/CommonInfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/TCGPlayer/GetOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/TCGPlayer/GetOrders.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/TCGPlayer/PriceProducts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/TCGPlayer/PriceProducts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/TCGPlayer/TokenHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/TCGPlayer/TokenHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/CommandGetPriceData.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/CommandGetPriceData.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,8 +117,11 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1PqEgOZRsigEpPDDGwAkBqRp5ol" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -159,7 +157,7 @@
       <workItem from="1566593338890" duration="38116000" />
       <workItem from="1566936326026" duration="10481000" />
       <workItem from="1567003349946" duration="11225000" />
-      <workItem from="1567170228499" duration="47175000" />
+      <workItem from="1567170228499" duration="72174000" />
     </task>
     <servers />
   </component>
@@ -176,5 +174,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
