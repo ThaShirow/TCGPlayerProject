@@ -12,18 +12,12 @@ use TrollAndToad\TCGPlayer\Stores\Inventory\UpdateSKUInventoryRequest;
 class ListProducts {
 
     protected $info;
-    protected $storeID;
-    protected $bearerToken;
-    protected $channelID;
-    protected $apiOptions;
+    protected $commonData;
 
     public function __construct(Repository $config, Connection $conn) {
 
         $this->info = new CommonInfo($config, $conn);
-        $this->storeID = $this->info->getStoreID();
-        $this->bearerToken = $this->info->getBearerToken();
-        $this->channelID = $this->info->getChannelID();
-        $this->apiOptions = $this->info->getApiOptions();
+        $this->commonData = $this->info->getCommonData();
 
     }
 
@@ -33,8 +27,8 @@ class ListProducts {
         $price = $productArr["price"];
         $qty = $productArr["qty"];
 
-        $listProducts = new UpdateSKUInventory($this->apiOptions);
-        $request = new UpdateSKUInventoryRequest(["price" => $price, "quantity" => $qty, "channelid" => $this->channelID], $this->bearerToken, $this->storeID, $skuID);
+        $listProducts = new UpdateSKUInventory($this->commonData->apiOptions);
+        $request = new UpdateSKUInventoryRequest(["price" => $price, "quantity" => $qty, "channelid" => $this->commonData->channelID], $this->commonData->bearerToken, $this->commonData->storeID, $skuID);
         $response = $listProducts->sendRequest($request)->getContent();
 
         return $response;
@@ -47,8 +41,8 @@ class ListProducts {
         $price = $productArr["price"];
         $skuID = $productArr["skuID"];
 
-        $listProducts = new UpdateSKUInventory($this->apiOptions);
-        $request = new UpdateSKUInventoryRequest(["price" => $price, "quantity" => $qty, "channelid" => $this->channelID], $this->bearerToken, $this->storeID, $skuID);
+        $listProducts = new UpdateSKUInventory($this->commonData->apiOptions);
+        $request = new UpdateSKUInventoryRequest(["price" => $price, "quantity" => $qty, "channelid" => $this->commonData->channelID], $this->commonData->bearerToken, $this->commonData->storeID, $skuID);
         $response = $listProducts->sendRequest($request)->getContent();
 
         return $response;

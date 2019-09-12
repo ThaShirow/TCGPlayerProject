@@ -78,6 +78,12 @@ class CommandGetPriceData extends Command {
 
             }
 
+            $this->conn->table("affiliate_prices_t")
+                ->raw(
+
+
+                );
+
         }
 
     }
