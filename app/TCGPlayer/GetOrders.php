@@ -34,7 +34,7 @@ class GetOrders {
 
     }
 
-    public function getOrderDetails($orderArr) {
+    public function getOrderDetails(array $orderArr) {
 
         $getOrderDetails = new GetOrderDetails($this->commonData->apiOptions);
         $request = new GetOrderDetailsRequest($this->commonData->bearerToken, $this->commonData->storeID, $orderArr);
@@ -44,7 +44,7 @@ class GetOrders {
 
     }
 
-    public function getOrderItems($orderID) {
+    public function getOrderItems(string $orderID) {
 
         $getOrderItems = new GetOrderItems($this->commonData->apiOptions);
         $request = new GetOrderItemsRequest(["includeItemDetails" => "true", "limit" => 50], $this->commonData->bearerToken, $this->commonData->storeID, $orderID);

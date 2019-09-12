@@ -21,7 +21,7 @@ class ShipOrders {
 
     }
 
-    public function sendTracking($orderArr) {
+    public function sendTracking(array $orderArr) {
 
         $trackingJSON = json_encode($orderArr["trackingArr"]);
 

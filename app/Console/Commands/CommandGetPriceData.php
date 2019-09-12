@@ -12,7 +12,6 @@ class CommandGetPriceData extends Command {
 
     protected $signature = 'command:getpricedata';
     protected $description = 'Grab price data from TCGPlayer to use internally.';
-
     protected $grabPrices;
     protected $conn;
 
@@ -31,27 +30,33 @@ class CommandGetPriceData extends Command {
         $resultArr = array();
 
         $dataObjArr = $this->conn->table("product_affiliate_mapping")
+            ->whereNotNull("affiliateproductdetailid")
+            ->whereNotNull("productdetailid")
+            ->where("affiliateproductdetailid", "!=", 0)
+            ->where("productdetailid", "!=", 0)
             ->orderBy("updated_at", "asc")
-            ->limit(500);
-
-        //$dataObjArr = Object("id" => serial, "productid" => our_product_id, "productdetailid" => our_product_detail_id, "affiliateid" => tcgplayerID, "affiliateproductid" => tcgproductid, "affiliateproductdetailid" => tcg sku, "created_at" date, "updated_at" date)
+            ->limit(500)
+            ->get();
 
         if(count($dataObjArr) > 0) {
 
             foreach ($dataObjArr as $dataObj) {
 
-                $skuArr[] = $dataObj->affiliateproductid;
+                $skuArr[] = $dataObj->affiliateproducdetailtid;
                 $countDown++;
 
                 if ($countDown == 10) {
-
+                    //print "<pre>"; print_r($skuArr); print "</pre>";
                     $resultArr = array_merge($resultArr, $this->grabPrices->getLowestPriceData($skuArr)["results"]);
+                    print "<pre>"; print_r($resultArr); print "</pre>"; exit;
                     $countDown = 0;
                     $skuArr = array();
 
                 }
 
             }
+
+            print "<pre>"; print_r($resultArr); print "</pre>"; exit;
 
             $alteredArr = array();
 
@@ -60,6 +65,8 @@ class CommandGetPriceData extends Command {
                 $alteredArr[$result["skuId"]] = $result;
 
             }
+
+            print "<pre>"; print_r($alteredArr); print "<pre>"; exit;
 
             foreach ($dataObjArr as $dataObj) {
 
@@ -78,11 +85,7 @@ class CommandGetPriceData extends Command {
 
             }
 
-            $this->conn->table("affiliate_prices_t")
-                ->raw(
-
-
-                );
+            $this->conn->raw();
 
         }
 

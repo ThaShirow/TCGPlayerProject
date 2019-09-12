@@ -13,7 +13,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\TestCommand::class
+        Commands\TestCommand::class,
+        Commands\CommandGetPriceData::class,
+        Commands\CommandSyncProducts::class
         //
     ];
 
